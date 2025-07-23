@@ -1,71 +1,101 @@
-:root{
-    --primary-color: #bb86fc;
-  --secondary-color: #03dac6;
-  --background-color: #121212;
-  --text-color: #e0e0e0;
-  --border-color: #333;
-  --button-bg-color: #1f1f1f; 
-  --button-text-color: #e0e0e0;
-  --input-bg-color: #1f1f1f;
-  --input-text-color: #e0e0e0;
-  --link-color: #bb86fc;
-  --link-hover-color: #3700b3;
-  --card-bg-color: #1f1f1f;
-  --card-border-color: #333;
-  --card-text-color: #e0e0e0;
-  --card-shadow: rgba(0, 0, 0, 0.2);
-  --card-hover-bg-color: #1f1f1f;
-  --card-hover-border-color: #444;
-  --card-hover-text-color: #e0e0e0;
-  --card-hover-shadow: rgba(0, 0, 0, 0.3);
-  --table-bg-color: #1f1f1f;
-  --table-border-color: #333;
-  --table-text-color: #e0e0e0;
-  --table-header-bg-color: #2c2c2c;
-  --table-header-text-color: #e0e0e0;
-  --primary-color: #bb86fc;
-  --secondary-color: #03dac6;
-  --background-color: #121212;
-  --text-color: #e0e0e0;
-  --border-color: #333;
-  --button-bg-color: #1f1f1f; 
-  --button-text-color: #e0e0e0;
-  --input-bg-color: #1f1f1f;
-  --input-text-color: #e0e0e0;
-  --link-color: #bb86fc;
-  --link-hover-color: #3700b3;
-  --card-bg-color: #1f1f1f;
-  --card-border-color: #333;
-  --card-text-color: #e0e0e0;
-  --card-shadow: rgba(0, 0, 0, 0.2
-  );
-  --card-hover-bg-color: #1f1f1f;
-  --card-hover-border-color: #444;
-  --card-hover-text-color: #e0e0e0;
-  --card-hover-shadow: rgba(0, 0, 0, 0.3);
-  --table-bg-color: #1f1f1f;
-  --table-border-color: #333;
-  --table-text-color: #e0e0e0;
-  --table-header-bg-color: #2c2c2c;
-  --table-header-text-color: #e0e0e0;
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+  background: #18181b;
+  color: #f4f4f5;
 }
 
-body.dark {
-  background-color: #121212;
-  color: #eee;
-
+body.dark-mode .header--navigation,
+body.dark-mode .right--side--nav,
+body.dark-mode .total--sales,
+body.dark-mode .total--customers,
+body.dark-mode .total--products,
+body.dark-mode .total--revenue,
+body.dark-mode .dashboard--Revenue,
+body.dark-mode .dashboard--TotalIncome,
+body.dark-mode .projects,
+body.dark-mode .top-products,
+body.dark-mode .sales-per-category-chart,
+body.dark-mode .sales-per-category,
+body.dark-mode .dashboard--Orders,
+body.dark-mode .monthly-income,
+body.dark-mode .order--details,
+body.dark-mode .page-heading,
+body.dark-mode .Calendars,
+body.dark-mode .modal-content {
+  background: #23232a;
+  color: #f4f4f5;
 }
 
-body.dark div{
-  background-color: var(--card-bg-color);
-  color: var(--card-text-color);
+body.dark-mode .dashboard--Revenue--analytics {
+  color: #f4f4f5;
 }
 
-body.dark button{
-  color: var(--card-text-color);
+body.dark-mode button {
+  color: #f4f4f5;
 }
 
-body.dark input {
-  background-color: var(--input-bg-color);
-  color: var(--input-text-color);
+body.dark-mode .order--nav,
+body.dark-mode .day-label,
+body.dark-mode .time-label {
+  background: #23232a;
+  color: #f4f4f5;
+}
+
+body.dark-mode input,
+body.dark-mode .product--search--nav,
+body.dark-mode .search {
+  background: #18181b;
+  color: #f4f4f5;
+}
+
+body.dark-mode .search input {
+  border: 1px none;
+}
+
+body.dark-mode .product--search--nav input {
+  border: none;
+}
+
+body.dark-mode .date {
+  background: #23232a;
+  color: #f4f4f5;
+}
+
+body.dark-mode .team-comp-cont {
+  background: #23232a;
+  color: #f4f4f5;
+}
+
+body.dark-mode .analytics-one-one,
+body.dark-mode .analytics-one-two,
+body.dark-mode .analytics--two,
+body.dark-mode .analytics-one-chart,
+body.dark-mode .analytics-two-chart,
+body.dark-mode .analytics-three-chart,
+body.dark-mode .monthly-income-chart,
+body.dark-mode .sales-chart {
+  background: #23232a;
+  color: #f4f4f5;
+}
+
+
+body.dark-mode .reports-date,
+body.dark-mode .reports-one-one,
+body.dark-mode .reports-one-two,
+body.dark-mode .reports-one-three,
+body.dark-mode .reports-one-four,
+body.dark-mode .months-earning{
+  background: #23232a;
+  color: #f4f4f5;
+}
+
+body.dark-mode #Templates {
+  background: #23232a;
+  color: #f4f4f5;
+}
+
+body.dark-mode .settings-container,
+body.dark-mode #Settings{
+  background: #23232a;
+  color: #f4f4f5;
 }
