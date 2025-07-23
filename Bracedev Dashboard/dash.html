@@ -7,6 +7,9 @@
   <title>Bracedev CEO | Dashboard</title>
 
   <link rel="stylesheet" href="dash.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="darkMode.css">
   <link rel="stylesheet" href="settings.css">
   <link rel="stylesheet" href="Team.css">
@@ -29,12 +32,12 @@
         <h3>BracedevCompany</h3>
       </div>
       <div class="product--search--nav">
-        <img src="./Svg/magnifying-glass-solid.svg" alt="reminder" width="15px" height="15px">
+        <i class="material-icons">search</i>
         <input type="text" id="searchBar" placeholder="Search product...">
       </div>
       <div class="reminder--user">
-        <img src="./Svg/bell-solid.svg" alt="reminder" width="20px" height="20px">
-        <img src="./Svg/user-solid.svg" alt="user" width="20px" height="20px">
+        <i class="material-icons">notifications</i>
+        <i class="material-icons">person</i>
       </div>
 
 
@@ -45,25 +48,17 @@
     <div class="content--display">
       <div class="right--side--nav">
         <div class="menu">
-          <p style="margin-bottom: 20px;">Menu</p>
+          <p style="margin-bottom: 20px; display: flex;align-items: center;"><i class="material-icons">menu</i> &nbsp; Menu</p>
 
           <div class="navigation--buttons">
-            <button class="menu-btn active" onclick="navigatePages('dashboard', this)"><img src="./Svg/gauge-solid.svg"
-                alt="" width="20px" height="20px">Dashboard</button>
-            <button class="menu-btn" onclick="navigatePages('Teammates', this)"><img src="./Svg/user-solid.svg"
-                alt="user" width="20px" height="20px" style="fill: white;"> Team</button>
-            <button class="menu-btn" onclick="navigatePages('Customer', this)"><img src="./Svg/users-solid.svg"
-                alt="user" width="20px" height="20px" style="fill: white;"> Customers</button>
-            <button class="menu-btn" onclick="navigatePages('Analytics', this)"><img src="./Svg/chart-simple-solid.svg"
-                alt="" width="20px" height="20px">Analytics</button>
-            <button class="menu-btn" onclick="navigatePages('Reports', this)"><img src="./Svg/clipboard-solid.svg"
-                alt="" width="20px" height="20px">Reports</button>
-            <button class="menu-btn" onclick="navigatePages('Calender', this)"><img src="./Svg/calendar-solid.svg"
-                alt="" width="20px" height="20px">Calender</button>
-            <button class="menu-btn" onclick="navigatePages('Feedback', this)"><img src="./Svg/clipboard-list-solid.svg"
-                alt="" width="20px" height="20px">Feedback</button>
-            <button class="menu-btn" onclick="navigatePages('Templates', this)"><img src="./Svg/cube-solid.svg" alt=""
-                width="20px" height="20px">Templates</button>
+            <button class="menu-btn active" onclick="navigatePages('dashboard', this)"><i class="material-icons">dashboard</i>Dashboard</button>
+            <button class="menu-btn" onclick="navigatePages('Teammates', this)"><i class="material-icons">groups</i> Team</button>
+            <button class="menu-btn" onclick="navigatePages('Customer', this)"><i class="material-icons">people</i>Customers</button>
+            <button class="menu-btn" onclick="navigatePages('Analytics', this)"><i class="material-icons">insights</i>Analytics</button>
+            <button class="menu-btn" onclick="navigatePages('Reports', this)"><i class="material-icons">bar_chart</i>Reports</button>
+            <button class="menu-btn" onclick="navigatePages('Calender', this)"><i class="material-icons">calendar_today</i>Calender</button>
+            <button class="menu-btn" onclick="navigatePages('Feedback', this)"><i class="material-icons">feedback</i>Feedback</button>
+            <button class="menu-btn" onclick="navigatePages('Templates', this)"><i class="material-icons">view_module</i>Templates</button>
 
           </div>
 
@@ -73,10 +68,11 @@
           <p style="margin-bottom: 20px;">General</p>
 
           <div class="navigation--buttons">
-            <button class="menu-btn" onclick="navigatePages('Settings', this)"><img src="./Svg/gear-solid.svg" alt=""
-                width="20px" height="20px">Settings</button>
-            <button class="menu-btn"><img src="./Svg/arrow-left-solid.svg" alt="" width="20px" height="20px">Log
-              Out</button>
+            <button class="menu-btn" onclick="navigatePages('Settings', this)">
+              <i class="material-icons">settings</i>Settings</button>
+            <button class="menu-btn"><i class="material-icons">logout</i>
+              Log Out</button>
+
           </div>
 
         </div>
@@ -99,7 +95,7 @@
             <div class="total--sales">
               <div class="total--sales--header">
                 <p>Total Sales</p>
-                <img src="./Svg/cart-shopping-solid.svg" alt="" width="20px" height="20px">
+                <i class="material-icons">shopping_cart</i>
               </div>
               <div class="sales--number">
                 <p style="font-size:35px;">2500</p>
@@ -115,7 +111,7 @@
             <div class="total--customers">
               <div class="total--customers--header">
                 <p>New Customer</p>
-                <img src="./Svg/users-solid.svg" alt="" width="20px" height="20px">
+                <i class="material-icons">people</i>
               </div>
               <div class="customers--number">
                 <p style="font-size:35px;">250</p>
@@ -130,7 +126,7 @@
             <div class="total--products">
               <div class="total--products--header">
                 <p>Returned Products</p>
-                <img src="./Svg/cube-solid.svg" alt="" width="20px" height="20px">
+                <i class="material-icons">inventory_2</i>
               </div>
               <div class="products--number">
                 <p style="font-size:35px;">80</p>
@@ -144,7 +140,7 @@
             <div class="total--revenue">
               <div class="total--revenue--header">
                 <p>Total Revenue</p>
-                <img src="./Svg/dollar-sign-solid.svg" alt="" width="20px" height="20px">
+                <i class="material-icons">attach_money</i>
               </div>
               <div class="revenue--number">
                 <p style="font-size:35px;">$82,500.64</p>
