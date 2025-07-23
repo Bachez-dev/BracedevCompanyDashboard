@@ -1,0 +1,71 @@
+:root{
+    --primary-color: #bb86fc;
+  --secondary-color: #03dac6;
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --border-color: #333;
+  --button-bg-color: #1f1f1f; 
+  --button-text-color: #e0e0e0;
+  --input-bg-color: #1f1f1f;
+  --input-text-color: #e0e0e0;
+  --link-color: #bb86fc;
+  --link-hover-color: #3700b3;
+  --card-bg-color: #1f1f1f;
+  --card-border-color: #333;
+  --card-text-color: #e0e0e0;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --card-hover-bg-color: #1f1f1f;
+  --card-hover-border-color: #444;
+  --card-hover-text-color: #e0e0e0;
+  --card-hover-shadow: rgba(0, 0, 0, 0.3);
+  --table-bg-color: #1f1f1f;
+  --table-border-color: #333;
+  --table-text-color: #e0e0e0;
+  --table-header-bg-color: #2c2c2c;
+  --table-header-text-color: #e0e0e0;
+  --primary-color: #bb86fc;
+  --secondary-color: #03dac6;
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --border-color: #333;
+  --button-bg-color: #1f1f1f; 
+  --button-text-color: #e0e0e0;
+  --input-bg-color: #1f1f1f;
+  --input-text-color: #e0e0e0;
+  --link-color: #bb86fc;
+  --link-hover-color: #3700b3;
+  --card-bg-color: #1f1f1f;
+  --card-border-color: #333;
+  --card-text-color: #e0e0e0;
+  --card-shadow: rgba(0, 0, 0, 0.2
+  );
+  --card-hover-bg-color: #1f1f1f;
+  --card-hover-border-color: #444;
+  --card-hover-text-color: #e0e0e0;
+  --card-hover-shadow: rgba(0, 0, 0, 0.3);
+  --table-bg-color: #1f1f1f;
+  --table-border-color: #333;
+  --table-text-color: #e0e0e0;
+  --table-header-bg-color: #2c2c2c;
+  --table-header-text-color: #e0e0e0;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #eee;
+
+}
+
+body.dark div{
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+}
+
+body.dark button{
+  color: var(--card-text-color);
+}
+
+body.dark input {
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+}

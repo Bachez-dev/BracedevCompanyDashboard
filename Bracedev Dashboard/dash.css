@@ -1,0 +1,522 @@
+:root {
+  --bg-color: #f0eded;
+  --input--bg: #fffcfc;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(241, 241, 245);
+  font-family: 'Arial', sans-serif;
+}
+
+.bracedev--container {
+  width: 100%;
+  height: 100vh;
+  padding: 10px 10px;
+}
+
+.product--search--nav {
+  width: 200px;
+  height: 30px;
+  background: #fffcfc;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  padding: 5px 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+  }
+}
+
+.header--navigation {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+}
+
+.reminder--user {
+  width: 70px;
+  padding: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content--display {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.right--side--nav {
+  width: 20%;
+  height: 850px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.navigation--buttons {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  width: 90%;
+  height: 50px;
+  padding: 15px 16px;
+  text-align: left;
+  margin-left: 10px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-btn:hover {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.menu-btn.active {
+  background: blue;
+  color: #ffffff;
+}
+
+.left--side--nav {
+  width: 80%;
+  height: 850px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+#dashboard {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard--header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: center;
+  /* margin-right: 17px ; */
+}
+
+.dashboard--sales {
+  width: 100%;
+  height: 230px;
+  display: flex;
+  flex: 1 1 1 1 calc(25% + 20px);
+  gap: 20px;
+}
+
+.total--sales {
+  width: 350px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.total--sales--header {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales--number {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.total--customers {
+  width: 350px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.total--customers--header {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.customers--number {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.total--products {
+  width: 350px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.total--products--header {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.products--number {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.total--revenue {
+  width: 350px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.total--revenue--header {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.revenue--number {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dashboard--Revenue--analytics {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  gap: 20px;
+}
+
+.dashboard--Revenue {
+  width: 700px;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.dashboard--revenue--header {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats {
+  background: #ccc;
+  padding: 2rem 1rem;
+  font-size: 1.8rem;
+  justify-content: space-between;
+}
+
+.sales {
+  flex: 0 0 60%;
+}
+
+.dashboard--TotalIncome {
+  width: 500px;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+
+  .chart {
+    width: 90%;
+    height: 90%;
+
+  }
+
+}
+
+.projects {
+  width: 220px;
+  height: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+
+  ul {
+    list-style-type: none;
+    line-height: 1cm;
+  }
+}
+
+.dashboard--revenue--header {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard--Orders {
+  width: 100%;
+  height: 400px;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.orders--header {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 150px;
+  height: 30px;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  background: #fffcfc;
+  margin-right: 30px;
+  border-radius: 15px;
+
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+
+  }
+}
+
+.order--details {
+  width: 100%;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.order--nav {
+  width: 100%;
+  height: 30px;
+  background: rgb(234, 234, 240);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.order--details--content {
+  width: 100%;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.order--customer--details {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 20px;
+
+  ul {
+    list-style-type: square;
+  }
+}
+
+.page-heading {
+  width: 100%;
+  height: 50px;
+  background: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.page-name {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.Calendars {
+  width: 100%;
+  max-height: 760px;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  grid-template-rows: 40px repeat(12, 70px);
+  /* 08:00 to 16:00 */
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.day-label {
+  background: #f1f5f9;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.time-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 13px;
+}
+
+.cell {
+  border: 1px solid #e2e8f0;
+  position: relative;
+  cursor: pointer;
+  padding: 6px !important;
+  box-sizing: border-box;
+}
+
+.event {
+  position: absolute;
+  width: calc(100% - 12px);
+  box-sizing: border-box;
+  background: #3b82f6;
+  color: white;
+  padding: 3px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  left: 6px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: -1;
+}
+
+.modal-content input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  padding: 6px;
+}
+
+.modal-content button {
+  width: 30% !important;
+  height: 30px;
+  border-radius: 10px !important;
+  margin-left: 0;
+  background: #3b82f6;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}

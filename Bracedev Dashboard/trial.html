@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Website Preview Loader</title>
+  <style>
+    #drop-zone {
+      border: 2px dashed #888;
+      padding: 40px;
+      text-align: center;
+      background: #f9f9f9;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    #add-btn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .preview-wrapper {
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      position: relative;
+    }
+
+    .preview-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .preview {
+      border: 1px solid #aaa;
+      height: 400px;
+      width: 100%;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="drop-zone">📂 Drag & Drop Website Folders Here</div>
+  <button id="add-btn">➕ Add Website Manually</button>
+  <input type="file" id="file-input" webkitdirectory directory multiple hidden />
+
+  <div id="previews"></div>
+
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const previews = document.getElementById('previews');
+    const addBtn = document.getElementById('add-btn');
+    const fileInput = document.getElementById('file-input');
+
+    // --- Drag and Drop Events ---
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.style.background = '#e0e0e0';
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.style.background = '#f9f9f9';
+    });
+
+    dropZone.addEventListener('drop', async (e) => {
+      e.preventDefault();
+      dropZone.style.background = '#f9f9f9';
+      const items = [...e.dataTransfer.items];
+      const entries = await getAllFileEntries(items);
+      const folders = groupFilesByFolder(entries);
+      handleFolderPreviews(folders);
+    });
+
+    // --- Button & File Picker ---
+    addBtn.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', async (e) => {
+      const files = [...e.target.files].map(file => ({
+        name: file.webkitRelativePath,
+        file
+      }));
+      const folders = groupFilesByFolder(files);
+      handleFolderPreviews(folders);
+      fileInput.value = ''; // reset input
+    });
+
+    // --- Core Preview Logic ---
+    async function handleFolderPreviews(folders) {
+      for (const folderName in folders) {
+        const files = folders[folderName];
+        const htmlFile = files.find(f => f.name.endsWith('.html'));
+        const cssFile = files.find(f => f.name.endsWith('.css'));
+        const jsFile = files.find(f => f.name.endsWith('.js'));
+
+        if (!htmlFile) {
+          alert(`No HTML file found in "${folderName}"`);
+          continue;
+        }
+
+        const [html, css, js] = await Promise.all([
+          htmlFile.file.text(),
+          cssFile ? cssFile.file.text() : '',
+          jsFile ? jsFile.file.text() : ''
+        ]);
+
+        const fullHTML = `
+      <html>
+        <head><style>${css}</style></head>
+        <body>
+          ${html}
+          <script>${js}<\/script>
+        </body>
+      </html>
+    `;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'preview-wrapper';
+
+        const title = document.createElement('div');
+        title.className = 'preview-title';
+        title.textContent = `Preview: ${folderName}`;
+
+        const iframe = document.createElement('iframe');
+        iframe.className = 'preview';
+        iframe.sandbox = 'allow-scripts';
+        iframe.srcdoc = fullHTML;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = '✖ Remove';
+        removeBtn.onclick = () => previews.removeChild(wrapper);
+
+        wrapper.append(title, iframe, removeBtn);
+        previews.appendChild(wrapper);
+      }
+    }
+
+    // --- Get Files from Dragged Folders ---
+    async function getAllFileEntries(items) {
+      const fileEntries = [];
+
+      async function traverse(item, path = '') {
+        return new Promise((resolve) => {
+          if (item.isFile) {
+            item.file((file) => {
+              fileEntries.push({ name: path + item.name, file });
+              resolve();
+            });
+          } else if (item.isDirectory) {
+            const dirReader = item.createReader();
+            dirReader.readEntries(async (entries) => {
+              for (const entry of entries) {
+                await traverse(entry, path + item.name + '/');
+              }
+              resolve();
+            });
+          }
+        });
+      }
+
+      for (const item of items) {
+        const entry = item.webkitGetAsEntry();
+        if (entry) await traverse(entry);
+      }
+
+      return fileEntries;
+    }
+
+    // --- Group by Top-Level Folder ---
+    function groupFilesByFolder(entries) {
+      const folderMap = {};
+      entries.forEach(({ name, file }) => {
+        const parts = name.split('/');
+        const folder = parts.length > 1 ? parts[0] : 'root';
+        if (!folderMap[folder]) folderMap[folder] = [];
+        folderMap[folder].push({ name: parts[parts.length - 1], file });
+      });
+      return folderMap;
+    }
+
+  </script>
+</body>
+
+</html>

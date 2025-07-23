@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Stretching Events Calendar</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: 80px repeat(7, 1fr);
+      grid-template-rows: 40px repeat(12, 60px);
+      /* 08:00 to 16:00 */
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .day-label {
+      background: #f1f5f9;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .time-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      font-size: 13px;
+    }
+
+    .cell {
+      border: 1px solid #e2e8f0;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .event {
+      position: absolute;
+      background: #3b82f6;
+      color: white;
+      padding: 3px 6px;
+      font-size: 12px;
+      border-radius: 4px;
+      z-index: 10;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      background: rgba(0, 0, 0, 0.4);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 6px;
+    }
+
+    .modal-content button {
+      padding: 6px 12px;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Weekly Calendar (Stretching Events)</h2>
+  <div class="calendar" id="calendar"></div>
+
+  <!-- Modal -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <h3>Add Event</h3>
+      <input type="text" id="eventTitle" placeholder="Event title" />
+      <input type="time" id="startTime" value="08:00" />
+      <input type="time" id="endTime" value="09:00" />
+      <input type="color" id="eventColor" value="#3b82f6" />
+      <button onclick="addEvent()">Add</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const calendar = document.getElementById("calendar");
+    const hours = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const cellHeight = 60;
+    let selectedDay = null;
+    let selectedHour = null;
+
+    // Create top row
+    calendar.appendChild(document.createElement("div")); // top-left corner
+    days.forEach(day => {
+      const dayLabel = document.createElement("div");
+      dayLabel.className = "day-label";
+      dayLabel.textContent = day;
+      calendar.appendChild(dayLabel);
+    });
+
+    // Create time rows and cells
+    hours.forEach((hour, rowIndex) => {
+      const timeLabel = document.createElement("div");
+      timeLabel.className = "time-label";
+      timeLabel.textContent = hour;
+      calendar.appendChild(timeLabel);
+
+      days.forEach((_, dayIndex) => {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        cell.dataset.day = dayIndex;
+        cell.dataset.hour = hour;
+        cell.addEventListener("click", () => openModal(dayIndex, hour));
+        calendar.appendChild(cell);
+      });
+    });
+
+    function openModal(dayIndex, hour) {
+      selectedDay = dayIndex;
+      selectedHour = hour;
+
+      document.getElementById("eventTitle").value = "";
+      document.getElementById("startTime").value = hour;
+
+      const [h, m] = hour.split(':').map(Number);
+      const endH = String(h + 1).padStart(2, "0");
+      document.getElementById("endTime").value = `${endH}:${m === 0 ? "00" : m}`;
+      document.getElementById("eventModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("eventModal").style.display = "none";
+    }
+
+    function addEvent() {
+      const title = document.getElementById("eventTitle").value;
+      const start = document.getElementById("startTime").value;
+      const end = document.getElementById("endTime").value;
+      const color = document.getElementById("eventColor").value;
+
+      if (!title || !start || !end || start >= end) return;
+
+      const [sh, sm] = start.split(":").map(Number);
+      const [eh, em] = end.split(":").map(Number);
+      const startTime = sh + sm / 60;
+      const endTime = eh + em / 60;
+      const top = (startTime - 8) * cellHeight + 40; // 40px offset for header row
+      const height = (endTime - startTime) * cellHeight;
+
+      const event = document.createElement("div");
+      event.className = "event";
+      event.style.top = top + "px";
+      event.style.height = height + "px";
+      event.style.width = "calc(100% / 8 - 2px)";
+      event.style.background = color;
+      event.style.gridColumn = selectedDay + 2; // skip time label
+      event.textContent = title;
+
+      calendar.appendChild(event);
+      closeModal();
+    }
+  </script>
+
+</body>
+
+</html>
