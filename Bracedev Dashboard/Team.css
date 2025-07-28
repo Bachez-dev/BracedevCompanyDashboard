@@ -8,22 +8,28 @@
 }
 
 .add-btn{
-  width: 200px;
+  width: 120px;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 11px;
 }
 
 .team-head-add {
   width: 100%;
-  height: 100%;
+  height: 50px;
   display: flex;
+    align-items: center;
   justify-content: space-between;
-  align-items: center;
+
+  background: #ffffffff;
+  border-radius: 10px;
+  padding: 10px;
 
   button{
-    width: 200px;
+    width: 100%;
+    height: 20px;
     border-radius: 6px;
     background: #4a4ad3;
     color: white;
@@ -60,7 +66,12 @@
 
 .team-employees {
   width: 100%;
-  height: calc(100% - 230px);
+  height: 535px;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
+  background: white;
+
 }
 
 .heading {
@@ -69,6 +80,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  position: static;
 }
 
 .team {
@@ -80,19 +93,96 @@
 
 }
 
-.team-member {
-  width: 320px;
-  height: 430px;
+.team-container{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+
+}
+
+.team-card{
+  width: 300px;
+  height: 300px;
+  padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+}
 
+.team-card:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  background: #f0f0f0;
+}
+
+.team-image{
+  width: 60px;
+  height: 60px;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
 
-  img {
-    width: 100%;
-    height: 90%;
-    border-radius: 10px;
+.team-card-header{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid #cccccc;
+}
+
+.team-card-details{
+  width: 100%;
+  height: calc(300px - 120px);
+}
+
+.member-email{
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #eeecec;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  p {
+    font-size: 14px;
+    color: #a09d9d;
   }
 }
+
+.member-phone{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #eeecec;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  p {
+    font-size: 14px;
+    color: #a09d9d;
+  }
+}
+
+.member-salary{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #eeecec;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  p {
+    font-size: 14px;
+    color: #a09d9d;
+  }
+}
+
