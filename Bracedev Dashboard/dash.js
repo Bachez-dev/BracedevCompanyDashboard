@@ -1,3 +1,4 @@
+
 function navigatePages(pageId, btn) {
   const pages = document.querySelectorAll('.page');
   pages.forEach(page => page.style.display = 'none');
@@ -7,17 +8,34 @@ function navigatePages(pageId, btn) {
     activePage.style.display = 'block';
   }
 
+
   document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+
+  if (btn) {
+    btn.classList.add('active');
+  }
 
   localStorage.setItem('activePage', pageId);
-
-  window.onload = function () {
-    const savedPage = localStorage.getItem('activePage') || 'Dashboard';
-    showPage(savedPage);
-  }
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const savedPage = localStorage.getItem('activePage') || 'Dashboard';
+  const targetPage = document.getElementById(savedPage);
+  const buttons = document.querySelectorAll('.menu-btn');
+
+  document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+
+  if (targetPage) {
+    targetPage.style.display = 'block';
+  }
+  buttons.forEach(btn => {
+    if (btn.dataset.page === savedPage) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+});
 function greeting() {
 
 

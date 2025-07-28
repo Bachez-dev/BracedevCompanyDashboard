@@ -3,11 +3,17 @@ const startKey = 'dashboardStartTime';
 const pausedKey = 'dashboardPausedAt';
 const totalKey = 'dashboardTotalTime';
 
-// Initialize storage if not already set
-if (!localStorage.getItem(startKey)) {
-  localStorage.setItem(startKey, Date.now());
+// 🔁 Check if it's a new day
+function isNewDay(timestamp) {
+  const lastDate = new Date(timestamp).toDateString();
+  const today = new Date().toDateString();
+  return lastDate !== today;
 }
-if (!localStorage.getItem(totalKey)) {
+
+// If not set OR a new day → reset
+const lastStart = localStorage.getItem(startKey);
+if (!lastStart || isNewDay(parseInt(lastStart))) {
+  localStorage.setItem(startKey, Date.now());
   localStorage.setItem(totalKey, '0');
 }
 
